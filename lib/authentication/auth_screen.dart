@@ -32,11 +32,11 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             automaticallyImplyLeading: false,
             title: const Text(
-              "iRider",
+              "iFood",
               style: TextStyle(
                 fontSize: 35,
                 color: Colors.white,
-                fontFamily: "Lobster",
+                fontFamily: "Train",
               ),
             ),
             centerTitle: true,

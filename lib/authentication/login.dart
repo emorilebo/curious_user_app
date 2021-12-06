@@ -73,18 +73,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future readDataAndSetDataLocally(User currentUser) async {
     await FirebaseFirestore.instance
-        .collection("riders")
+        .collection("users")
         .doc(currentUser.uid)
         .get()
         .then((snapshot) async {
       if (snapshot.exists) {
         await sharedPreferences!.setString("uid", currentUser.uid);
+        await sharedPreferences!.setString("email", snapshot.data()!["email"]);
+        await sharedPreferences!.setString("name", snapshot.data()!["name"]);
         await sharedPreferences!
-            .setString("email", snapshot.data()!["riderEmail"]);
-        await sharedPreferences!
-            .setString("name", snapshot.data()!["riderName"]);
-        await sharedPreferences!
-            .setString("photoUrl", snapshot.data()!["riderAvatarUrl"]);
+            .setString("photoUrl", snapshot.data()!["photoUrl"]);
         Navigator.push(
             context, MaterialPageRoute(builder: (c) => const HomeScreen()));
       } else {
@@ -95,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
           context: context,
           builder: (c) {
             return ErrorDialog(
-              message: "No record exists. Try Signing Up as a Rider",
+              message: "No record exists. Try Signing Up",
             );
           },
         );
@@ -148,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 formValidation();
               },
               child: const Text(
-                "Login as a Rider",
+                "Login",
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
