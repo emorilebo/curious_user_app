@@ -33,14 +33,25 @@ class _MySplashScreenState extends State<MySplashScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        color: Colors.white,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.amber,
+              Colors.cyan,
+            ],
+            begin: FractionalOffset(0.0, 0.0),
+            end: FractionalOffset(1.0, 0.0),
+            stops: [0.0, 1.0],
+            tileMode: TileMode.clamp,
+          ),
+        ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Image.asset("images/logo.png"),
+                child: Image.asset("images/welcome.png"),
               ),
               const SizedBox(
                 height: 10,
@@ -48,12 +59,12 @@ class _MySplashScreenState extends State<MySplashScreen> {
               const Padding(
                 padding: EdgeInsets.all(18.0),
                 child: Text(
-                  "World Largest Online Food App",
+                  "Order Food Online with IFood",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.black54,
+                    color: Colors.white,
                     fontSize: 28,
-                    fontFamily: "Signatra",
+                    fontFamily: "Train",
                     letterSpacing: 2,
                   ),
                 ),
