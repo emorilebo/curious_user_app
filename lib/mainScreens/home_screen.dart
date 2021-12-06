@@ -1,3 +1,5 @@
+import 'package:curious_user_app/authentication/auth_screen.dart';
+import 'package:curious_user_app/global/global.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
