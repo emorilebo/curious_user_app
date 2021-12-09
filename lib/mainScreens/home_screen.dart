@@ -1,5 +1,6 @@
 import 'package:curious_user_app/authentication/auth_screen.dart';
 import 'package:curious_user_app/global/global.dart';
+import 'package:curious_user_app/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
           sharedPreferences!.getString("name")!,
         ),
         centerTitle: true,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -34,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+      drawer: MyDrawer(),
       body: Center(
         child: ElevatedButton(
           child: const Text("Logout"),

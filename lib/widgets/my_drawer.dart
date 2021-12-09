@@ -26,7 +26,15 @@ class MyDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-                )
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  sharedPreferences!.getString("name")!,
+                  style: TextStyle(
+                      color: Colors.black, fontSize: 20, fontFamily: 'Train'),
+                ),
               ],
             ),
           ),
