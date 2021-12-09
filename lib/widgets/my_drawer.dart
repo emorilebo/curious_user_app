@@ -1,3 +1,4 @@
+import 'package:curious_user_app/authentication/auth_screen.dart';
 import 'package:curious_user_app/global/global.dart';
 import 'package:flutter/material.dart';
 
@@ -13,13 +14,13 @@ class MyDrawer extends StatelessWidget {
               children: [
                 //Header drawer
                 Material(
-                  borderRadius: const BorderRadius.all(Radius.circular(80)),
+                  borderRadius: const BorderRadius.all(Radius.circular(40)),
                   elevation: 10,
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: Container(
-                      height: 160,
-                      width: 160,
+                      height: 120,
+                      width: 120,
                       child: CircleAvatar(
                         backgroundImage: NetworkImage(
                             sharedPreferences!.getString('photoUrl')!),
@@ -61,6 +62,11 @@ class MyDrawer extends StatelessWidget {
                   ),
                   onTap: () {},
                 ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
                 ListTile(
                   leading: const Icon(
                     Icons.reorder,
@@ -71,6 +77,11 @@ class MyDrawer extends StatelessWidget {
                     style: TextStyle(color: Colors.black),
                   ),
                   onTap: () {},
+                ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
                 ),
                 ListTile(
                   leading: const Icon(
@@ -83,6 +94,11 @@ class MyDrawer extends StatelessWidget {
                   ),
                   onTap: () {},
                 ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
                 ListTile(
                   leading: const Icon(
                     Icons.search,
@@ -93,6 +109,11 @@ class MyDrawer extends StatelessWidget {
                     style: TextStyle(color: Colors.black),
                   ),
                   onTap: () {},
+                ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
                 ),
                 ListTile(
                   leading: const Icon(
@@ -105,6 +126,11 @@ class MyDrawer extends StatelessWidget {
                   ),
                   onTap: () {},
                 ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
                 ListTile(
                   leading: const Icon(
                     Icons.exit_to_app,
@@ -114,7 +140,19 @@ class MyDrawer extends StatelessWidget {
                     'Sign Out',
                     style: TextStyle(color: Colors.black),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    firebaseAuth.signOut().then((value) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (c) => const AuthScreen()));
+                    });
+                  },
+                ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
                 ),
               ],
             ),
