@@ -96,10 +96,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       return Container(
                         width: MediaQuery.of(context).size.width,
                         margin: const EdgeInsets.symmetric(horizontal: 1.0),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Image.asset(
                             index,
+                            fit: BoxFit.contain,
                           ),
                         ),
                       );
