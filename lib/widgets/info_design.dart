@@ -19,7 +19,7 @@ class _InfoDesignWidgetState extends State<InfoDesignWidget> {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Container(
-          height: 265,
+          height: 285.0,
           width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
@@ -30,6 +30,23 @@ class _InfoDesignWidgetState extends State<InfoDesignWidget> {
               ),
               Image.network(
                 widget.model!.sellerAvatarUrl!,
+                height: 210.0,
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                widget.model!.sellerName!,
+                style: const TextStyle(
+                    color: Colors.cyan, fontSize: 20, fontFamily: 'Train'),
+              ),
+              Text(
+                widget.model!.sellerEmail!,
+                style: const TextStyle(
+                  color: Colors.cyan,
+                  fontSize: 12,
+                ),
               ),
             ],
           ),
