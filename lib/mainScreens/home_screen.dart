@@ -66,7 +66,20 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       drawer: MyDrawer(),
-      body: Center(),
+      body:  CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                height: MediaQuery.of(context).size.height * .3,
+                width: MediaQuery.of(context).size.width,
+                child: ,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
