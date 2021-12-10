@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curious_user_app/authentication/auth_screen.dart';
 import 'package:curious_user_app/global/global.dart';
 import 'package:curious_user_app/models/sellers.dart';
+import 'package:curious_user_app/widgets/info_design.dart';
 import 'package:curious_user_app/widgets/my_drawer.dart';
 import 'package:curious_user_app/widgets/progress_bar.dart';
 import 'package:flutter/material.dart';
@@ -131,9 +132,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisCount: 1,
                       staggeredTileBuilder: (c) => StaggeredTile.fit(1),
                       itemBuilder: (context, index) {
-                        Sellers model = Sellers.fromJson(
-                            snapshot.data!.docs[index].docs()!);
+                        Sellers sModel = Sellers.fromJson(
+                          snapshot.data!.docs[index].data()!
+                              as Map<String, dynamic>,
+                        );
                         //design for display sellers-cafe-resturant
+                        return InfoDesignWidget(
+                          model: sModel,
+                          context: context,
+                        );
                       },
                       itemCount: snapshot.data!.docs.length,
                     );
