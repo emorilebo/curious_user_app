@@ -1,8 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curious_user_app/authentication/auth_screen.dart';
 import 'package:curious_user_app/global/global.dart';
+import 'package:curious_user_app/models/sellers.dart';
 import 'package:curious_user_app/widgets/my_drawer.dart';
+import 'package:curious_user_app/widgets/progress_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -112,6 +116,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+          ),
+          StreamBuilder<QuerySnapshot>(
+            stream:
+                FirebaseFirestore.instance.collection("sellers").snapshots(),
+            builder: (context, snapshot) {
+              return !snapshot.hasData
+                  ? SliverToBoxAdapter(
+                      child: Center(
+                        child: circularProgress(),
+                      ),
+                    )
+                  : SliverStaggeredGrid.countBuilder(
+                      crossAxisCount: 1,
+                      staggeredTileBuilder: (c) => StaggeredTile.fit(1),
+                      itemBuilder: (context, index) {
+                        Sellers model = Sellers.fromJson(
+                            snapshot.data!.docs[index].docs()!);
+                        //design for display sellers-cafe-resturant
+                      },
+                      itemCount: snapshot.data!.docs.length,
+                    );
+            },
           ),
         ],
       ),
